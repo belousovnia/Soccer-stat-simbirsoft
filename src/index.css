@@ -1,4 +1,4 @@
-.App {
+.app {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -30,14 +30,23 @@
 .secondList {
   margin: 0;
   width: 700px;
+  height: 100%;
   background-color: #fff;
   border: 1px solid #37ACEF;
+}
+
+.showBtn {
+  display: none;
 }
 
 .btn {
   border-radius: 0px;
   border: 1px solid #37ACEF;
   color: #37ACEF;
+}
+
+.block1 {
+  width: 100%;
 }
 
 .btnBlock {
@@ -47,6 +56,10 @@
 .btnBlock .btn {
   border: 0;
   border-bottom: 1px solid #37ACEF;
+}
+
+.btnBlock .btn1 {
+  border-right: 1px solid #37ACEF;
 }
 
 .searchBlock {
@@ -93,7 +106,11 @@
   overflow: auto;
 }
 
-.label {
+.labelBatton {
+  width: 100%;
+}
+
+.labelBatton .label {
   height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -104,6 +121,8 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  border: 0;
+  border-bottom: 1px solid #37ACEF;
 }
 
 .logoItem {
@@ -118,5 +137,48 @@
 .shadowLogo {
   height: 28px;
   width: 50px;
+}
+
+@media screen and (max-width: 991px) {
+  .app {
+    padding-left: 50px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .firstList {
+    position: fixed;
+    height: 100vh;
+    top: 0;
+    left: -300px;
+    -webkit-transition: 600ms;
+    transition: 600ms;
+  }
+  .firstList.active {
+    left: 0;
+    -webkit-transition: 350ms;
+    transition: 350ms;
+  }
+  .showBtn {
+    position: fixed;
+    padding: 3px;
+    height: 80px;
+    width: 40px;
+    top: 46%;
+    left: 0;
+    -webkit-transition: 600ms;
+    transition: 600ms;
+    border-left: 0;
+    background-color: #fff;
+    display: block;
+  }
+  .showBtn.active {
+    left: 300px;
+    -webkit-transition: 350ms;
+    transition: 350ms;
+  }
+  .arrow {
+    width: 100%;
+    height: 100%;
+  }
 }
 /*# sourceMappingURL=index.css.map */

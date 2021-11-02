@@ -2,10 +2,15 @@ import React from 'react'
 
 function SecondList(props){
 
+
+
   return (
-      <div className='secondList'>
-          ыыв
+    <div className='secondList'>
+      <div>
+
       </div>
+      
+    </div>
   )
 };
 

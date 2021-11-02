@@ -2,18 +2,6 @@ import React,{} from 'react'
 import FirstListTile from './FirstListTile';
 
 function TeamList(props){
-  
-  function buildList(radio) {
-    let data = [];
-
-    if (radio == "0"){
-      data = JSON.parse(localStorage["teamsList"]) ;
-    }else if (radio == "1"){
-      data = JSON.parse(localStorage["competitionsList"]);
-    };
-
-    return data
-  };
 
   return (
     <div className="containerListInform">
@@ -22,7 +10,13 @@ function TeamList(props){
         role="group"
         aria-label="Basic radio toggle button group"
       >
-        {buildList(props.radio).map(i => <FirstListTile data={i}/>)}
+        {props.radio.map(i => 
+        <FirstListTile 
+          data={i} 
+          show={props.show}
+          setId={props.setId}
+        />
+        )}
       </div>
     </div>
     
