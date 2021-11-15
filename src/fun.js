@@ -2,13 +2,6 @@
 
 const secret = 'd1172b57700b4df29bba15452110f918';
 
-let countKey = 0;
-
-export function getKey(){
-    countKey += 1
-    return countKey
-}
-
 // --------------------------------------------------------------------------------------
 
 // Запрос списка соревнаваний.
@@ -90,7 +83,6 @@ export async function rTeamsMatches(id){
         return response.json();
     });
 
-    console.log(data);
     data = data.matches;
     const returnData = [];
 

@@ -9,15 +9,12 @@ function App() {
   const [radio, setRadio] = useState("0");
   const [id, setId] = useState(null)
 
-  console.log(id);
-  console.log(radio);
-
   if (localStorage["teamsList"] == undefined || localStorage["competitionsList"] == undefined) {
-     fun.saveLocalStorege();;
+    fun.saveLocalStorege();
   };
 
   function show() {
-    setStatusFirstList(!statusFirstList)
+    setStatusFirstList(!statusFirstList);
   };
  
   function arrow() {
