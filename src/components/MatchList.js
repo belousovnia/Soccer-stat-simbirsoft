@@ -63,15 +63,13 @@ function MatchList(props){
   }), 
     [props.id, props.dateTo, props.dateFrom])
 
-  // getListMatches().then(res => console.log(listBuilder(
-  //   res, props.dateFrom, props.dateTo))) ;
-
-  console.log(matches);
-
   return (
     <div className='containerMatchList'>
       <div className='matchList'>
-        {matches.map((i) => <MatchTile dataMatch={i}/>)}
+        {matches.map((i) => <MatchTile 
+        dataMatch={i}
+        radio={props.radio}
+        />)}
       </div>
     </div>
     

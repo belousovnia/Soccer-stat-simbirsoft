@@ -230,12 +230,75 @@ $mainColor: #0d6efd;
     flex-direction: column;
 }
 
+
+
+// ------------------------------------------------------------------
+// Стили плитки матчей 
+
 .matchTile {
     width: auto;
-    height: 40px;
+    height: auto;
     border: 1px solid $borderColor;
     margin: 10px;
+    background-color: rgb(255, 255, 255);
 
+}
+
+.informLine {
+    display: flex;
+    justify-content: center;
+    font-size: 10px;
+    
+}
+
+.pDate {
+    margin-right: 10px;
+}
+
+.competitionLine {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.teamLine {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+
+}
+
+.score {
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    
+    * {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+}
+
+.homeTeam {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.awayTeam {
+    width: 50%;
+}
+
+.winner {
+    color: #7ba639;
+}
+
+.loser {
+    color: #d51d29;
+}
+
+.draw {
+    color: #eeba20;
 }
 
 //-------------------------------------------------------------------

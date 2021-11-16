@@ -84,6 +84,7 @@ export async function rTeamsMatches(id){
     });
 
     data = data.matches;
+    console.log(data);
     const returnData = [];
 
     for (let i =0; i < data.length; i++){
@@ -99,15 +100,13 @@ export async function rTeamsMatches(id){
                 name: data[i].homeTeam.name,
                 id: data[i].homeTeam.id,
                 score: data[i].score.fullTime.homeTeam + 
-                    data[i].score.halfTime.homeTeam + 
                     data[i].score.extraTime.homeTeam + 
                     data[i].score.penalties.homeTeam,
             },
             awayTeam: {
                 name: data[i].awayTeam.name,
                 id: data[i].awayTeam.id,
-                score: data[i].score.fullTime.awayTeam + 
-                    data[i].score.halfTime.awayTeam + 
+                score: data[i].score.fullTime.awayTeam +  
                     data[i].score.extraTime.awayTeam + 
                     data[i].score.penalties.awayTeam,
             },
@@ -142,7 +141,6 @@ export async function rCompetitionsMatches(id){
                 name: data[i].homeTeam.name,
                 id: data[i].homeTeam.id,
                 score: data[i].score.fullTime.homeTeam + 
-                    data[i].score.halfTime.homeTeam + 
                     data[i].score.extraTime.homeTeam + 
                     data[i].score.penalties.homeTeam,
             },
@@ -150,7 +148,6 @@ export async function rCompetitionsMatches(id){
                 name: data[i].awayTeam.name,
                 id: data[i].awayTeam.id,
                 score: data[i].score.fullTime.awayTeam + 
-                    data[i].score.halfTime.awayTeam + 
                     data[i].score.extraTime.awayTeam + 
                     data[i].score.penalties.awayTeam,
             },
