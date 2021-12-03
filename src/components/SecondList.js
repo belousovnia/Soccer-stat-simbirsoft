@@ -73,10 +73,13 @@ function SecondList(props){
       </div>
       
       <MatchList
+        getRandomKey={props.getRandomKey}
         radio={props.radio}
         id={props.id}
         dateFrom={dateFrom}
         dateTo={dateTo}
+        rCompetitionsMatches={props.rCompetitionsMatches}
+        rTeamsMatches={props.rTeamsMatches}
       />
     </div>
   )

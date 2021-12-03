@@ -47,7 +47,7 @@ function MatchTile(props){
   };  
  
   return (
-    <div className='matchTile'>
+    <div className='matchTile' >
       <div className='informLine'>
         <div className='pDate'>Дата проведения:</div>
         {props.dataMatch.date.substring(0, 10)}
@@ -66,7 +66,6 @@ function MatchTile(props){
           {props.dataMatch.awayTeam.name}
         </div>
       </div>
-
     </div>
     
   )

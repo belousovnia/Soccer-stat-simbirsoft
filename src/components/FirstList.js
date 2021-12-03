@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React, { useState, useEffect } from 'react'
 import TeamList from './TeamList';
 
 function FirstList(props){
@@ -6,6 +6,7 @@ function FirstList(props){
   const [pattern, setPattern] = useState(new RegExp(''));
 
   function buildList() {
+
     let data = [];
     let dataSort = [];
 
@@ -49,10 +50,14 @@ function FirstList(props){
             value="0"
             defaultChecked
             onChange={()=>{
-              props.setRadio(0)
+              props.setRadio(0);
+              props.setId(null);
             }}
           />
-          <label className="btn btn1 btn-outline-primary" htmlFor="btnradio1q">
+          <label 
+            className="btn btn1 btn-outline-primary" 
+            htmlFor="btnradio1q"
+          >
             Команды
           </label>
 
@@ -63,11 +68,14 @@ function FirstList(props){
             id="btnradio2q"
             autoComplete="off"
             onChange={()=>{
-              props.setRadio(1)
-              props.setId(null)
+              props.setRadio(1);
+              props.setId(null);
             }}
           />
-          <label className="btn btn-outline-primary" htmlFor="btnradio2q">
+          <label 
+            className="btn btn-outline-primary" 
+            htmlFor="btnradio2q"
+          >
             Соревнования
           </label>
         </div>
@@ -91,7 +99,7 @@ function FirstList(props){
       </div>
       
 
-      <TeamList 
+      <TeamList
         setId={props.setId}
         radio={buildList()}
         show={props.show}
