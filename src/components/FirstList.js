@@ -5,31 +5,42 @@ function FirstList(props){
   
   const [pattern, setPattern] = useState(new RegExp(''));
 
-  function buildList() {
-
-    let data = [];
+  // Сортирует список комманд/соревнований и возвращает их в массиве. 
+  async function buildList() {
+    let data = await props.getPrimaryData();
     let dataSort = [];
-
-    if (props.radio == "0"){
-      data = JSON.parse(localStorage["teamsList"]) ;
-    }else if (props.radio == "1"){
-      data = JSON.parse(localStorage["competitionsList"]);
-    };
 
     for (let i = 0; i < data.length; i++){
       if (pattern.test(data[i].name)) {
-        dataSort.push(data[i])
-      }
-    }
+        dataSort.push(data[i]);
+      };
+    };
 
-    return dataSort
+    return dataSort;
   };
 
+  // Проверяет какой список команд или соревнований активен.
+  function defaultChecked() {
+    if (sessionStorage.radio == '1') {
+      document.getElementById('btnradio2q')
+      .setAttribute('checked', 'checked');
+    }else{
+      document.getElementById('btnradio1q')
+      .setAttribute('checked', 'checked');
+    };
+  };
+
+  // Сохраняет паттерн поиска.
   function search() {
     const strSearch = document.getElementById("searchBlock").value;
-
-    setPattern(new RegExp('\\b'+ strSearch, 'i'))
+    sessionStorage.setItem('strSearch', strSearch);
+    setPattern(new RegExp('\\b'+ strSearch, 'i'));
   };
+
+  useEffect(() => {
+    defaultChecked();
+    search();
+  }, []);
 
   return (
     <div 
@@ -47,11 +58,10 @@ function FirstList(props){
             name="btnradio1"
             id="btnradio1q"
             autoComplete="off"
-            value="0"
-            defaultChecked
             onChange={()=>{
               props.setRadio(0);
-              props.setId(null);
+              sessionStorage.setItem('radio', '0');
+              props.setNameSecondList('Выберите команду или соревнование');
             }}
           />
           <label 
@@ -69,7 +79,8 @@ function FirstList(props){
             autoComplete="off"
             onChange={()=>{
               props.setRadio(1);
-              props.setId(null);
+              sessionStorage.setItem('radio', '1');
+              props.setNameSecondList('Выберите команду или соревнование');
             }}
           />
           <label 
@@ -87,6 +98,7 @@ function FirstList(props){
             placeholder=""
             aria-label="Search"
             id="searchBlock"
+            defaultValue={sessionStorage.strSearch}
           />
           <button 
             type="button" 
@@ -95,17 +107,37 @@ function FirstList(props){
           >
             Поиск
           </button>
+          <button 
+            type="button" 
+            className="
+              btn
+              btn-outline-danger
+              btn-sm 
+              buttonSearch
+              buttonSearchDisable
+            "
+            onClick={() => {
+              document.getElementById("searchBlock").value = '';
+              search();
+            }}
+          >
+            Сброс
+          </button>
         </div>
       </div>
       
 
       <TeamList
         setId={props.setId}
-        radio={buildList()}
+        buildList={buildList}
         show={props.show}
+        radio={props.radio}
+        setRadioSaved={props.setRadioSaved}
+        pattern={pattern}
+        setNameSecondList={props.setNameSecondList}
       />
     </div>
-  )
+  );
 };
 
 export default FirstList;

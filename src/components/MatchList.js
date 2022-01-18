@@ -3,39 +3,48 @@ import MatchTile from './MatchTile';
 
 function MatchList(props){
 
-  const [matches, setMatches] = useState([])
+  const [matches, setMatches] = useState([]);
+
+  function dataSave(data) {
+    console.log(data);
+    if (data == 'errorLimit'){
+      alert(
+        'Вы привысили предельно допустимое количество запросов в минуту. Подождите 1 минуту, затем повторите попытку.'
+      );
+    } else {
+      sessionStorage.setItem('dataMatches', JSON.stringify(data));
+      sessionStorage.setItem('radioSaved', props.radioSaved);
+      sessionStorage.setItem('id', props.id);
+      props.setNameSecondListChange(props.nameSecondList);
+      sessionStorage.setItem('nameSecondList', props.nameSecondList);
+    };
+  };
 
   async function getListMatches() {
     let dataMatches = 'error';
-    
 
     if (props.id == null) {
-      return null
-    } else if (sessionStorage.radio == props.radio && 
+
+      return null;
+      
+    } else if (sessionStorage.radioSaved == props.radioSaved && 
       sessionStorage.id == props.id) {
         
       dataMatches = JSON.parse(sessionStorage['dataMatches']); 
-      console.log('Данные взяты из хранилища сессии');
 
-    } else if (props.radio == 0) {
+    } else if (props.radioSaved == 0) {
 
-      console.log('Запрос!!!'); // Удалить!!!
       dataMatches = await props.rTeamsMatches(props.id);
-      sessionStorage.setItem('dataMatches', JSON.stringify(dataMatches));
-      sessionStorage.setItem('radio', props.radio);
-      sessionStorage.setItem('id', props.id);
+      dataSave(dataMatches);
 
-    } else if (props.radio == 1) {
+    } else if (props.radioSaved == 1) {
 
-      console.log('Запрос!!!'); // Удалить!!!
       dataMatches = await props.rCompetitionsMatches(props.id);
-      sessionStorage.setItem('dataMatches', JSON.stringify(dataMatches));
-      sessionStorage.setItem('radio', props.radio);
-      sessionStorage.setItem('id', props.id);
+      dataSave(dataMatches);
 
     };
 
-    return dataMatches
+    return dataMatches;
   };
 
   // ------------------------------------------------------
@@ -43,71 +52,64 @@ function MatchList(props){
   function matchFilter(dataMatches, dateFrom, dateTo) {
 
     if (dataMatches == null) {
-      setMatches([])
-      return
+      setMatches([]);
+      return;
+    }else if (dataMatches == 'errorLimit') {
+      return;
     };
-
+    
     let listMatches = [];
 
     if(dateFrom == 'Invalid Date') {
-      setMatches(() => {return dataMatches});
-      return
-    };
-    if(dateTo == 'Invalid Date') {
-      setMatches(() => {return dataMatches});
-      return
-    };
+      listMatches = dataMatches;
+    } else if(dateTo == 'Invalid Date') {
+      listMatches = dataMatches;
+    } else {
+      for (let i = 0; i < dataMatches.length; i++) {
+        const date = new Date(dataMatches[i].date);
 
-    for (let i = 0; i < dataMatches.length; i++) {
-      const date = new Date(dataMatches[i].date)
-
-      if (date.getTime() > dateFrom.getTime()) {
-        if (date.getTime() < dateTo.getTime()) {
-          listMatches.push(dataMatches[i])
-        }
-      }
+        if (date.getTime() > dateFrom.getTime()) {
+          if (date.getTime() < dateTo.getTime()) {
+            listMatches.push(dataMatches[i]);
+          };
+        };
+      };
     };
 
-    setMatches(() => {return listMatches});
+    if (listMatches.length == 0){
+      setMatches(
+        <div className='matchAlert'>
+          Нет информации по матчам
+        </div>
+      );
+    }else{
+      setMatches(
+        listMatches.map((i) => <MatchTile
+          key={props.getRandomKey()} 
+          dataMatch={i}
+          radioSaved={props.radioSaved}
+          getRandomKey={props.getRandomKey}
+        />)
+      );
+    };
   };
 
   // ------------------------------------------------------
 
-  function checkMatchLength(){
-    if (matches.length == 0){
-      return (
-        <div className='matchAlert'>
-          Нет информации по матчам
-        </div>
-      )
-    }else{
-      return(
-        matches.map((i) => <MatchTile
-        key={props.getRandomKey()} 
-        dataMatch={i}
-        radio={props.radio}
-        getRandomKey={props.getRandomKey}
-        />)
-      )
-    };
-  };
-
   const memo = useMemo(() => {
-    console.log(1);
     getListMatches().then(res => {
       matchFilter(res, props.dateFrom, props.dateTo);
-      console.log(2);
-    })
-  }, [props.id, props.radio, props.dateTo, props.dateFrom]);
+    }); 
+  }, [props.id, props.radioSaved, props.dateTo, props.dateFrom]);
 
   return (
-    <div className='containerMatchList'>
+    <div className='containerMatchList' id='matchList'>
       <div className='matchList'>
-        {checkMatchLength()}
+        {matches}
       </div>
     </div>
     
-  )
+  );
 };
 
 export default MatchList;

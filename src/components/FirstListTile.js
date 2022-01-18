@@ -1,7 +1,19 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 
 function FirstListTile(props){
 
+  // Активирует выбранную команду/соревнование.
+  function checkId() {
+    if (props.data.id == sessionStorage.id) {
+      document.getElementById(`btnradio${props.data.id}`)
+      .setAttribute('checked', 'checked');
+    };
+  };
+
+  useEffect(() => {
+    checkId();
+  }, []);
+  
   return (
     <div className="labelBatton" >
       <input 
@@ -17,8 +29,11 @@ function FirstListTile(props){
         htmlFor={`btnradio${props.data.id}`}
         key={`b${props.data.id}`}
         onClick={() => {
-          props.show()
-          props.setId(props.data.id)
+          props.show();
+          props.setId(props.data.id);
+          props.setNameSecondList(props.data.name);
+          props.setRadioSaved(props.radio);
+          document.getElementById('matchList').scrollTop=0;
         }}
       >
         <img src={props.data.logo} className="logoItem"/>
@@ -26,7 +41,7 @@ function FirstListTile(props){
         <div className="logoItem shadowLogo"/>
       </label>
     </div>
-  )
+  );
 };
 
 export default FirstListTile;

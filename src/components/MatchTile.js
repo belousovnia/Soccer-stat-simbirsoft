@@ -2,16 +2,18 @@ import React,{} from 'react'
 
 function MatchTile(props){
 
+  // Если выбрана команды то добавляет строчку с соревнованием.
   function competition() {
-    if (props.radio == '0') {
+    if (props.radioSaved == '0') {
       return (
         <div className='competitionLine'>
           {props.dataMatch.competition.name}       
         </div>
-      )
-    }
+      );
+    };
   };  
 
+  // Формирует строчку с голами. 
   function score()  {
     if (props.dataMatch.status == 'FINISHED'){
       return (
@@ -20,7 +22,7 @@ function MatchTile(props){
           :
           <div>{props.dataMatch.awayTeam.score}</div>   
         </div>
-      )
+      );
     }else{
       return (
         <div className='score'>
@@ -28,7 +30,7 @@ function MatchTile(props){
           :
           <div>-</div>   
         </div>
-      )
+      );
     };
   };
 
@@ -68,7 +70,7 @@ function MatchTile(props){
       </div>
     </div>
     
-  )
+  );
 };
 
 export default MatchTile;

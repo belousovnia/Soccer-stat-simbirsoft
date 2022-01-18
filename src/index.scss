@@ -75,10 +75,11 @@ $mainColor: #0d6efd;
     padding: 10px;
     border-bottom: 1px solid $borderColor;
     display: flex;
+    padding-right: 6px;
 }
 
 .searchLine {
-    width: auto;
+    width: 100%;
     margin-right: 4px;
     border-radius: 0px;
 }
@@ -87,6 +88,14 @@ $mainColor: #0d6efd;
     width: 50px;
     padding: 0;
     font-size: 0.6rem;
+    margin-right: 4px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.buttonSearchDisable {
+    color: crimson;
+    border: 1px solid #dc143c;
 }
 
 // ------------------------------------------------------------------
@@ -162,6 +171,8 @@ $mainColor: #0d6efd;
     margin-bottom: 5px;
 }
 
+
+
 .filter {
     height: auto;
     color: $borderColor;
@@ -179,6 +190,8 @@ $mainColor: #0d6efd;
         font-size: 15px;
     }
 
+    
+
     .containerSearch {
         height: auto;
         width: auto;
@@ -186,6 +199,24 @@ $mainColor: #0d6efd;
         display: flex;
         flex-direction: row;
         margin-bottom: 5px;
+        // padding-left: 10px;
+    
+        .btn {
+            margin-left: 0;
+        }
+
+        .buttonDanger{
+            color: crimson;
+            border: 1px solid #dc143c;
+        }
+
+        .buttonDanger:hover {
+            color: white;
+        }
+    }
+
+    .btnSearch {
+        margin-left: 10px;
     }
 
     .date {
@@ -239,14 +270,6 @@ $mainColor: #0d6efd;
     padding: 10px;
 }
 
-.spinerDisabled {
-    display: none;
-}
-
-.spinner {
-    display: none;
-}
-
 // ------------------------------------------------------------------
 // Стили плитки матчей 
 
@@ -262,8 +285,7 @@ $mainColor: #0d6efd;
 .informLine {
     display: flex;
     justify-content: center;
-    font-size: 10px;
-    
+    font-size: 14px;    
 }
 
 .pDate {
@@ -319,16 +341,6 @@ $mainColor: #0d6efd;
 }
 
 //-------------------------------------------------------------------
-
-@media screen and (max-width: 550px){
-    .filter {
-        
-    }
-    
-    .containerSearch {
-    }
-
-}
 
 @media screen and (max-width: 860px){
     .app {

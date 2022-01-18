@@ -1,32 +1,36 @@
-import React,{ useState, useMemo } from 'react'
+import React,{ useState, useMemo} from 'react'
 import FirstListTile from './FirstListTile';
 
 function TeamList(props){
 
-  const [list, setList] = useState(null)
-
-  //  Костыль с getkey потому, что с getRandomKey отображения
+  const [list, setList] = useState(null);
+  
+  //  C getkey потому, что с getRandomKey отображения
   // эффекта радиокнопки работает некорректно.
 
+  // Возвращает число +1 от предыдущего. 
   let key = 0;
-  
   function getKey(){
-    key++
-    return `key${key}`
-  }
+    key++;
+    return `key${key}`;
+  };
 
   const memo = useMemo(() => {
-    setList(
-      props.radio.map(i => 
+    props.buildList().then(response => {
+      let data = response.map(i => 
         <FirstListTile 
           data={i} 
           show={props.show}
           setId={props.setId}
           key={getKey()}
-        />
-      )
-    )
-  }, [props.radio]);
+          radio={props.radio}
+          setRadioSaved={props.setRadioSaved}
+          pattern={props.pattern}
+          setNameSecondList={props.setNameSecondList}
+        />)
+        setList(data);
+      });
+  }, [props.radio, props.pattern]);
 
   return (
     <div className="containerListInform">
@@ -39,7 +43,7 @@ function TeamList(props){
       </div>
     </div>
     
-  )
+  );
 };
 
 export default TeamList;
