@@ -245,26 +245,26 @@ function App() {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light ">
-        <Link to="/" className="headerLink nav-link">Главная</Link>
-        <Link to="/teams" className="headerLink nav-link">Команды</Link>
-        <Link to="/competitions" className="headerLink nav-link">Соревнования</Link>
+        <Link to="Soccer-stat-simbirsoft/" className="headerLink nav-link">Главная</Link>
+        <Link to="Soccer-stat-simbirsoft/teams" className="headerLink nav-link">Команды</Link>
+        <Link to="Soccer-stat-simbirsoft/competitions" className="headerLink nav-link">Соревнования</Link>
       </nav>
 
       <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="teams" element={
+        <Route path="Soccer-stat-simbirsoft/" element={<Home/>}/>
+        <Route path="Soccer-stat-simbirsoft/teams" element={
           <Teams
             getPrimaryData={getPrimaryData}
             getKey={getKey}
           />
         }/>
-        <Route path="competitions" element={
+        <Route path="Soccer-stat-simbirsoft/competitions" element={
           <Competitions
             getPrimaryData={getPrimaryData}
             getKey={getKey}
           />
         }/>
-        <Route path="teams/:id/:nameList" element={
+        <Route path="Soccer-stat-simbirsoft/teams/:id/:nameList" element={
           <Matchs
             type={0}
             getKey = {getKey}
@@ -272,7 +272,7 @@ function App() {
             rCompetitionsMatches = {rCompetitionsMatches}
           />
         }/>
-        <Route path="competitions/:id/:nameList" element={
+        <Route path="Soccer-stat-simbirsoft/competitions/:id/:nameList" element={
           <Matchs
             type={1}
             getKey = {getKey}

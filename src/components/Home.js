@@ -11,10 +11,10 @@ function Home(){
                     бесплатного api.
 
                 </h1>
-                <Link to="/teams" className="homeLink">
+                <Link to="teams" className="homeLink">
                     Список команд
                 </Link>
-                <Link to="/competitions" className="homeLink">
+                <Link to="competitions" className="homeLink">
                     Список соревнований
                 </Link>
             </div>
