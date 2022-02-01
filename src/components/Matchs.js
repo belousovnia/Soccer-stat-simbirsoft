@@ -158,7 +158,7 @@ function Matchs(props) {
       </div>
       
       <MatchList
-        getRandomKey = {props.getRandomKey}
+        getKey = {props.getKey}
         radioSaved = {props.type}
         id = {useParams().id}
         saveName = {useParams().nameList}
@@ -167,6 +167,7 @@ function Matchs(props) {
         rCompetitionsMatches = {props.rCompetitionsMatches}
         rTeamsMatches = {props.rTeamsMatches}
         nameSecondList = {props.nameSecondList}
+        getKey = {props.getKey}
       />
     </div>
   );

@@ -4,16 +4,6 @@ import TeamCompetitionTile from './TeamCompetitionTile';
 function TeamList(props){
 
   const [list, setList] = useState(null);
-  
-  //  C getkey потому, что с getRandomKey отображения
-  // эффекта радиокнопки работает некорректно.
-
-  // Возвращает число +1 от предыдущего. 
-  let key = 0;
-  function getKey(){
-    key++;
-    return `key${key}`;
-  };
 
   const memo = useMemo(() => {
     props.buildList().then(response => {
@@ -22,7 +12,7 @@ function TeamList(props){
           data={i} 
           show={props.show}
           setId={props.setId}
-          key={getKey()}
+          key={props.getKey()}
           radio={props.radio}
           setRadioSaved={props.setRadioSaved}
           pattern={props.pattern}

@@ -7,7 +7,6 @@ function Teams(props){
   const [searchParams, setSearchParams] = useSearchParams();
   const postQuery = searchParams.get('post') || '';
 
-
   // Сортирует список комманд/соревнований и возвращает их в массиве.
   async function buildList() {
     let data = await props.getPrimaryData(0);
@@ -33,11 +32,11 @@ function Teams(props){
     setList(<div className='spinner spinner-1'/>)
     buildList().then(response => {
       let data = response.map(i => 
-        <div className='teamsLinkContainer'>
+        <div className='teamsLinkContainer' key={props.getKey()}>
           <Link 
               to={`${i.id}/${i.name}`} 
               className="teamsLink"
-              key={props.getRandomKey()}
+              key={props.getKey()}
           >
             <img src={i.logo} className="logoItem"/>
             {i.name}

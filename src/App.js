@@ -12,7 +12,7 @@ function App() {
 
   //  Возвращает уникально число. Используется для раздачи уникальных 
   // ключей.
-  function getRandomKey() {
+  function getKey() {
     countNewKey.current++;
     return countNewKey.current;
   };
@@ -255,19 +255,19 @@ function App() {
         <Route path="teams" element={
           <Teams
             getPrimaryData={getPrimaryData}
-            getRandomKey={getRandomKey}
+            getKey={getKey}
           />
         }/>
         <Route path="competitions" element={
           <Competitions
             getPrimaryData={getPrimaryData}
-            getRandomKey={getRandomKey}
+            getKey={getKey}
           />
         }/>
         <Route path="teams/:id/:nameList" element={
           <Matchs
             type={0}
-            getRandomKey = {getRandomKey}
+            getKey = {getKey}
             rTeamsMatches = {rTeamsMatches}
             rCompetitionsMatches = {rCompetitionsMatches}
           />
@@ -275,7 +275,7 @@ function App() {
         <Route path="competitions/:id/:nameList" element={
           <Matchs
             type={1}
-            getRandomKey = {getRandomKey}
+            getKey = {getKey}
             rTeamsMatches = {rTeamsMatches}
             rCompetitionsMatches = {rCompetitionsMatches}
           />

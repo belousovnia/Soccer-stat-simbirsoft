@@ -82,10 +82,10 @@ function MatchList(props){
     }else{
       setMatches(
         listMatches.map((i) => <MatchTile
-          key={props.getRandomKey()} 
+          key={props.getKey()} 
           dataMatch={i}
           radioSaved={props.radioSaved}
-          getRandomKey={props.getRandomKey}
+          getKey={props.getKey}
         />)
       );
     };

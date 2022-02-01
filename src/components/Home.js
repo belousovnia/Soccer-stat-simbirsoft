@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-class Home extends Component {
-    state = {  } 
-    render() { 
+function Home(){
         return (
             <div className="home">
                 <h1 className="h1Home">
@@ -22,10 +20,5 @@ class Home extends Component {
             </div>
         );
     }
-}
  
 export default Home;
-<div>
-    <button>Da</button>
-    <button>NEt </button>
-</div>

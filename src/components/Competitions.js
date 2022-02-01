@@ -37,7 +37,7 @@ function Teams(props){
           <Link 
               to={`${i.id}/${i.name}`} 
               className="teamsLink"
-              key={props.getRandomKey()}
+              key={props.getKey()}
           >
             <img src={i.logo} className="logoItem"/>
             {i.name}
