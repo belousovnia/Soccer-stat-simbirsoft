@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Soccer-stat-simbirsoft/static/css/main.eeb3d278.chunk.css",
-    "main.js": "/Soccer-stat-simbirsoft/static/js/main.0b178fdc.chunk.js",
-    "main.js.map": "/Soccer-stat-simbirsoft/static/js/main.0b178fdc.chunk.js.map",
+    "main.js": "/Soccer-stat-simbirsoft/static/js/main.9b655fe7.chunk.js",
+    "main.js.map": "/Soccer-stat-simbirsoft/static/js/main.9b655fe7.chunk.js.map",
     "runtime-main.js": "/Soccer-stat-simbirsoft/static/js/runtime-main.68592a04.js",
     "runtime-main.js.map": "/Soccer-stat-simbirsoft/static/js/runtime-main.68592a04.js.map",
     "static/css/2.0a9ec390.chunk.css": "/Soccer-stat-simbirsoft/static/css/2.0a9ec390.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.0a9ec390.chunk.css",
     "static/js/2.bf1aed87.chunk.js",
     "static/css/main.eeb3d278.chunk.css",
-    "static/js/main.0b178fdc.chunk.js"
+    "static/js/main.9b655fe7.chunk.js"
   ]
 }
