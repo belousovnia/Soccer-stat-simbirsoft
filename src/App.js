@@ -1,75 +1,20 @@
-import React, { useState, useRef } from 'react'
-import FirstList from './components/FirstList'
-import SecondList from './components/SecondList'
+import React, { useRef } from 'react';
 import { apiKey } from './apiKey';
+import { Routes, Route, Link} from 'react-router-dom';
+import Home from './components/Home';
+import Teams from './components/Teams';
+import Competitions from './components/Competitions';
+import Matchs from './components/Matchs';
 
 function App() {
 
-  const secret = apiKey;
-
-  let storageRadio = sessionStorage.radio;
-  if (storageRadio == undefined) {storageRadio = 0};
-  let storageRadioSaved = sessionStorage.radioSaved;
-  
-  
-  const [statusFirstList, setStatusFirstList] = useState(true);
-  const [radio, setRadio] = useState(storageRadio);
-  const [radioSaved, setRadioSaved] = useState(storageRadioSaved); 
-  const [id, setId] = useState(sessionStorage.id);
-  const [nameSecondList, setNameSecondList] = useState();
   const countNewKey = useRef(0);
- 
-  // ----------------------------------------------------------------
 
   //  Возвращает уникально число. Используется для раздачи уникальных 
   // ключей.
   function getRandomKey() {
     countNewKey.current++;
     return countNewKey.current;
-  };
-
-  //  Меняет тип отображения первого блока.
-  function show() {
-    setStatusFirstList(!statusFirstList);
-  };
- 
-  // Векторная стрелочка для кнопки раскрытия.
-  function arrow() {
-    if (statusFirstList) {
-      return (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width={16}
-          height={16}
-          fill="currentColor"
-          className="bi bi-arrow-bar-left"
-          viewBox="0 0 16 16"
-          className="arrow"
-        >
-          <path
-            fillRule="evenodd"
-            d="M12.5 15a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5zM10 8a.5.5 0 0 1-.5.5H3.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L3.707 7.5H9.5a.5.5 0 0 1 .5.5z"
-          />
-        </svg>
-      );
-    } else {
-      return (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width={16}
-          height={16}
-          fill="currentColor"
-          className="bi bi-arrow-bar-right"
-          viewBox="0 0 16 16"
-          className="arrow"
-        >
-          <path
-            fillRule="evenodd"
-            d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8zm-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5z"
-          />
-        </svg>
-      );
-    };
   };
 
   // ----------------------------------------------------------------
@@ -80,7 +25,7 @@ function App() {
   async function rCompetitions(){
 
     let data = await fetch('https://api.football-data.org/v2/competitions?plan=TIER_ONE', {
-      headers: {'X-Auth-Token': secret,}
+      headers: {'X-Auth-Token': apiKey,}
     }).then((response) => {
       return response.json();
     });
@@ -116,7 +61,7 @@ function App() {
   async function rTeams(){
     
     let data = await fetch('https://api.football-data.org/v2/teams?plan=TIER_ONE', {
-      headers: {'X-Auth-Token': secret,}
+      headers: {'X-Auth-Token': apiKey,}
     }).then((response) => {
       return response.json();
     });
@@ -149,7 +94,7 @@ function App() {
       data = await fetch(
         `https://api.football-data.org/v2/teams/${id}/matches`, 
       {
-        headers: {'X-Auth-Token': secret,}
+        headers: {'X-Auth-Token': apiKey,}
       }).then((response) => {
         return response.json();
       });
@@ -202,7 +147,7 @@ function App() {
     try {
       data = await fetch(
         `https://api.football-data.org/v2/competitions/${id}/matches`, {
-        headers: {'X-Auth-Token': secret,}
+        headers: {'X-Auth-Token': apiKey,}
       }).then((response) => {
         return response.json();
       });
@@ -250,7 +195,7 @@ function App() {
   //  Возвращает и обновляет данные в локальном хранилище, список 
   // команд и список соревнований.
 
-  async function getPrimaryData() {
+  async function getPrimaryData(type) {
 
     let teamsList;
     let competitionsList;
@@ -287,9 +232,9 @@ function App() {
     
     };
 
-    if (radio == "0"){
+    if (type == "0"){
       return teamsList;
-    }else if (radio == "1"){
+    }else if (type == "1"){
       return competitionsList;
     };
   };
@@ -298,37 +243,46 @@ function App() {
   // ----------------------------------------------------------------
 
   return (
-    <div className="app">
-      <FirstList 
-        radio={radio}
-        setId={setId}
-        setRadio={setRadio}
-        setRadioSaved={setRadioSaved}
-        status={statusFirstList} 
-        show={show}
-        getPrimaryData={getPrimaryData}
-        setNameSecondList={setNameSecondList}
-      />
+    <>
+      <nav className="navbar navbar-expand-lg navbar-light ">
+        <Link to="/" className="headerLink nav-link">Главная</Link>
+        <Link to="/teams" className="headerLink nav-link">Команды</Link>
+        <Link to="/competitions" className="headerLink nav-link">Соревнования</Link>
+      </nav>
 
-      <button 
-        type="button" 
-        className={statusFirstList ? 'btn btn-outline-primary showBtn active' :
-        'btn btn-outline-primary showBtn'
-        }
-        onClick={() => show()}
-      >
-      {arrow()}
-      </button>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="teams" element={
+          <Teams
+            getPrimaryData={getPrimaryData}
+            getRandomKey={getRandomKey}
+          />
+        }/>
+        <Route path="competitions" element={
+          <Competitions
+            getPrimaryData={getPrimaryData}
+            getRandomKey={getRandomKey}
+          />
+        }/>
+        <Route path="teams/:id/:nameList" element={
+          <Matchs
+            type={0}
+            getRandomKey = {getRandomKey}
+            rTeamsMatches = {rTeamsMatches}
+            rCompetitionsMatches = {rCompetitionsMatches}
+          />
+        }/>
+        <Route path="competitions/:id/:nameList" element={
+          <Matchs
+            type={1}
+            getRandomKey = {getRandomKey}
+            rTeamsMatches = {rTeamsMatches}
+            rCompetitionsMatches = {rCompetitionsMatches}
+          />
+        }/>
+      </Routes>
 
-      <SecondList 
-        radioSaved = {radioSaved}
-        id = {id}
-        getRandomKey = {getRandomKey}
-        rTeamsMatches = {rTeamsMatches}
-        rCompetitionsMatches = {rCompetitionsMatches}
-        nameSecondList = {nameSecondList}
-      />
-    </div>
+    </>
   );
 };
 

@@ -1,6 +1,6 @@
 import React,{useEffect} from 'react'
 
-function FirstListTile(props){
+function TeamCompetitionTile(props){
 
   // Активирует выбранную команду/соревнование.
   function checkId() {
@@ -44,4 +44,4 @@ function FirstListTile(props){
   );
 };
 
-export default FirstListTile;
+export default TeamCompetitionTile;

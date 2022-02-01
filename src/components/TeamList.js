@@ -1,5 +1,5 @@
 import React,{ useState, useMemo} from 'react'
-import FirstListTile from './FirstListTile';
+import TeamCompetitionTile from './TeamCompetitionTile';
 
 function TeamList(props){
 
@@ -18,7 +18,7 @@ function TeamList(props){
   const memo = useMemo(() => {
     props.buildList().then(response => {
       let data = response.map(i => 
-        <FirstListTile 
+        <TeamCompetitionTile 
           data={i} 
           show={props.show}
           setId={props.setId}

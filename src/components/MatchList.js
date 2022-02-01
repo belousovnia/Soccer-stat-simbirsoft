@@ -1,34 +1,31 @@
 import React, { useState, useMemo } from 'react'
+import { useNavigate } from 'react-router-dom';
 import MatchTile from './MatchTile';
 
 function MatchList(props){
 
+  const navigate = useNavigate();
   const [matches, setMatches] = useState([]);
 
   function dataSave(data) {
-    console.log(data);
     if (data == 'errorLimit'){
       alert(
         'Вы привысили предельно допустимое количество запросов в минуту. Подождите 1 минуту, затем повторите попытку.'
       );
+      navigate(-1);
     } else {
       sessionStorage.setItem('dataMatches', JSON.stringify(data));
-      sessionStorage.setItem('radioSaved', props.radioSaved);
-      sessionStorage.setItem('id', props.id);
-      props.setNameSecondListChange(props.nameSecondList);
-      sessionStorage.setItem('nameSecondList', props.nameSecondList);
     };
   };
 
   async function getListMatches() {
-    let dataMatches = 'error';
+    let dataMatches = [];
 
     if (props.id == null) {
 
       return null;
       
-    } else if (sessionStorage.radioSaved == props.radioSaved && 
-      sessionStorage.id == props.id) {
+    } else if (sessionStorage.saveName == props.saveName) {
         
       dataMatches = JSON.parse(sessionStorage['dataMatches']); 
 
@@ -97,14 +94,16 @@ function MatchList(props){
   // ------------------------------------------------------
 
   const memo = useMemo(() => {
+    setMatches(<div className='spinner spinner-1'/>)
     getListMatches().then(res => {
       matchFilter(res, props.dateFrom, props.dateTo);
-    }); 
-  }, [props.id, props.radioSaved, props.dateTo, props.dateFrom]);
+      sessionStorage.setItem('saveName', props.saveName);
+    });
+  }, [props.dateTo, props.dateFrom]);
 
   return (
     <div className='containerMatchList' id='matchList'>
-      <div className='matchList'>
+      <div className='matchContainer'>
         {matches}
       </div>
     </div>

@@ -1,109 +1,245 @@
-$borderColor: #37ACEF;
-$mainColor: #0d6efd;
+// Базовые цвета
+$borderColor: #0d6efd;
+$firstColor: #015fac;
+$secondColor: #208feb;
+$thirdColor: #9dd8ff;
+$fourthColor: #F5F5F6;
 
-.app {
+.navbar {
+    position: fixed;
     display: flex;
     justify-content: center;
-    padding: 2%;
-    background-color: #A7D1E9;
+    top: 0;
+    width: 100%;
+    height: 70px;
+    background-color: $firstColor;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.headerLink {
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+}
+
+@media screen and (max-width: 850px){
+    .navbar {
+        height: 60px;
+    }
+
+    .home {
+        margin-top: 60px;
+    }
+}
+
+@media screen and (min-width: 450px) and (max-width: 850px){
+    .headerLink {
+        font-size: 20px;
+    }  
+}
+
+@media screen and (max-width: 450px){
+    .headerLink {
+        font-size: 15px;
+        padding: 5px;
+    }  
+}
+
+.headerLink:hover {
+    color: black;
+}
+
+.headerLink:focus {
+    color: black;
+}
+
+// ------------------------------------------------------------------
+
+.home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: $thirdColor;
     width: 100%;
     height: 100vh;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
 }
 
-.firstList {
-    margin: 0px;
-    margin-right: 50px;
-    height: 100%;
-    width: 300px;
-    background-color: #fff;
-    border: 1px solid $borderColor;
-    display: flex;
-    flex-direction: column;
-}
-
-.secondList {
-    margin: 0;
-    width: 700px;
-    height: 100%;
-    background-color: #fff;
-    border: 1px solid $borderColor;
-    display: flex;
-    flex-direction: column;
-}
-
-// ------------------------------------------------------------------
-// firstList
-
-.showBtn {
-    display: none;
-}
-
-.btn {
-    border-radius: 0px;
-    border: 1px solid $borderColor;
-    color: #212529;
-}
-
-.block1 {
+.homeLink {
+    color: white;
+    text-decoration: none;
+    max-width: 400px;
     width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+    background-color: $secondColor;
+    border-radius: 15px;
+    border: 3px solid $firstColor;
+    box-shadow: 10px 10px 5px #80b0cf;
+    margin-bottom: 30px;
+}
+
+.h1Home {
+    max-width: 1000px;
+    font-size: 26px;
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.homeLink:hover {
+    color: black;
 }
 
 // ------------------------------------------------------------------
 
-.btnBlock {
+.Teams {
+    padding-top: 70px;
+    background-color: $thirdColor;
     width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+}
+
+
+
+.containerTeams {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+}
+
+@media screen and (max-width: 850px){
+    .Teams {
+       padding-top: 60px; 
+    }
+}
+
+.teamsList {
+    width: 100%;
+    max-width: 470px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.teamsLink {
+    width: 100%;
+    // height: auto;
+    // min-height: 54px;
+    // max-height: 100%;
+    font-size: 25px;
+    background-color: #fff;
+    margin-top: 20px;
+    border: 2px solid $secondColor;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    border-radius: 15px;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+
+}
+
+@media screen and (max-width: 450px){
+  .teamsLink {
+      font-size: 20px; 
+  } 
+}
+
+.teamsLink:hover {
+    color: black;
+    background-color: $secondColor;
+}
+
+.logoItem {
     height: 40px;
-
-    .btn{
-        border: 0;
-        height: 40px;
-        border-bottom: 1px solid $borderColor;
-    }
-
-    .btn1 {
-        height: 40px;
-        border-right: 1px solid $borderColor;
-    }
+    width: auto;
+    margin-right: 5px;
+    margin-left: 5px;
 }
 
+.shadowLogo {
+    height: 40px;
+    width: 40px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
 
 // ------------------------------------------------------------------
+// Стили блока поиска 
 
 .searchBlock {
     width: 100%;
-    height: 40px;
+    height: 60px;
+    min-height: 60px;
     padding: 10px;
-    border-bottom: 1px solid $borderColor;
-    display: flex;
     padding-right: 6px;
+    display: flex;
+    justify-content: center;
+    position: static;
+    background-color: $secondColor;
 }
 
 .searchLine {
-    width: 100%;
+    max-width: 500px;
     margin-right: 4px;
     border-radius: 0px;
+    font-size: 26px;
 }
 
 .buttonSearch {
-    width: 50px;
+    width: 100px;
     padding: 0;
-    font-size: 0.6rem;
+    font-size: 20px;
     margin-right: 4px;
     padding-left: 2px;
     padding-right: 2px;
+    padding-bottom: 2px;
+    border: 2px solid white;
+    color: white;
 }
 
 .buttonSearchDisable {
     color: crimson;
-    border: 1px solid #dc143c;
+    border: 2px solid #dc143c;
+    padding-bottom: 2px;
 }
+
+@media screen and (max-width: 450px){
+    .searchLine {
+        font-size: 15px; 
+    } 
+    
+    .buttonSearch {
+        font-size: 15px; 
+    } 
+  }
 
 // ------------------------------------------------------------------
+// Стили страницы с командами и соревнованиями
 
-.teamList {
-    width: 100%;
-    overflow: auto;
-}
+// .teamList {
+//     padding-top: 70px;
+//     width: 100%;
+//     height: 100vh;
+//     display: flex;
+//     flex-direction: column;
+//     overflow: auto;
+// }
 
 .listInform {
     width: 100%;
@@ -130,84 +266,105 @@ $mainColor: #0d6efd;
     }
 }
 
-.logoItem {
-    height: 28px;
-    width: 50px;
-}
-
-.nameItem{
-    margin: 0;
-}
-
-.shadowLogo {
-    height: 28px;
-    width: 50px;
-    text-align: center;
-}
-
 // ------------------------------------------------------------------
-// secondList 
+// Стили страницы с матчами  
+
+.matchList {
+    padding-top: 70px;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+@media screen and (max-width: 850px){
+    .matchList {
+       padding-top: 60px; 
+    }
+}
 
 .toolBar {
     width: 100%;
+    height: auto;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     flex-wrap: wrap;
+    background-color: $secondColor;
+    padding-bottom: 5px;
+    
 }
 
 .typeMatch {
-    height: 30px;
+    width: 100%;
     padding-left: 5px;
     padding-right: 5px;
-    color: #212529;
-    font-size: 20px;
+    padding-bottom: 8px;
+    padding-top: 5px;
+    color: white;
+    font-size: 25px;
     display: flex;
     flex-grow: 1;
-    white-space: nowrap;
-    border-bottom: 1px solid $borderColor;
     justify-content: center;
     align-items: center;
-    margin-bottom: 5px;
+    background-color: $secondColor;
+    text-align: center;
 }
 
+@media screen and (min-width: 450px) and (max-width: 850px){
+    .typeMatch {
+        font-size: 20px;
+    }  
+}
 
+@media screen and (max-width: 450px){
+    .typeMatch {
+        font-size: 15px;
+    }
+}
+
+.met {
+    font-size: 20px;
+    color: white;
+}
 
 .filter {
     height: auto;
+    padding-bottom: 5px;
     color: $borderColor;
-    font-size: 15px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    border-bottom: 1px solid $borderColor;
     flex-grow: 1;
+    color: #000;
 
     * {
-        color: $borderColor;
-        font-size: 15px;
+        font-size: 17px;
     }
-
-    
 
     .containerSearch {
         height: auto;
         width: auto;
-        height: 25px;
+        height: auto;
         display: flex;
         flex-direction: row;
         margin-bottom: 5px;
-        // padding-left: 10px;
-    
+        padding-left: 10px;
+        padding-right: 5px;
+
         .btn {
             margin-left: 0;
+            margin-right: 5px;
         }
 
         .buttonDanger{
+            font-weight: bold;
             color: crimson;
-            border: 1px solid #dc143c;
+            border: 3px solid #dc143c;
+
         }
 
         .buttonDanger:hover {
@@ -215,50 +372,57 @@ $mainColor: #0d6efd;
         }
     }
 
-    .btnSearch {
-        margin-left: 10px;
+
+    .buttonSearch {
+        width: auto;
+        margin-right: 4px;
+        padding: 4px;
+        font-size: 16px;
+        border: 3px solid white;
+        color: white;
+        font-weight: bold;
     }
 
-    .date {
-        border: 0;
-        border-right: 1px solid $borderColor;
-        border-left: 1px solid $borderColor;
-        border-top: 1px solid $borderColor;
+    .buttonSearch:hover{
+        background-color: $borderColor;
+        border-color: $borderColor;
     }
-
-    .btn {
-        height: 25px;
-        padding: 0;
-        padding-left: 5px;
-        padding-right: 5px;
-        border: 0;
-        margin-right: 10px;
-        margin-left: 10px;
-        border: 1px solid $borderColor;
-     }
 
      .met {
         padding: 5px;
         display: flex;
         align-items: center;
-     }
+    }
+
+    @media screen and (max-width: 600px){
+        .buttonSearch {
+            font-size: 10px;
+        } 
+        .buttonDanger{
+            font-size: 14px;
+            padding: 4px;
+        }
+    }
 }
 
 .dateInput {
-    height: 25px;
-    border: 1px solid $borderColor;
+    border: 1px solid black;
 }
 
-// ------------------------------------------------------------------
+//-------------------------------------------------------------------
 
 .containerMatchList {
     width: 100%;
+    height: 100%;
     overflow: auto;
+    display: flex;
+    justify-content: center;
 }
 
-.matchList {
+.matchContainer {
     width: 100%;
-    height: auto;
+    max-width: 500px;
+    height: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -321,6 +485,7 @@ $mainColor: #0d6efd;
     display: flex;
     justify-content: flex-end;
     padding-left: 10px;
+    text-align: right;
 }
 
 .awayTeam {
@@ -340,54 +505,83 @@ $mainColor: #0d6efd;
     color: #eeba20;
 }
 
-//-------------------------------------------------------------------
-
-@media screen and (max-width: 860px){
-    .app {
-        padding-left: 50px;
-        padding-top: 0;
-        padding-bottom: 0;
-    }
-
-    .firstList {
-        position: fixed;
-        height: 100vh;
-        top: 0;
-        left: -300px;
-        transition: 600ms;
-    }
-
-    .firstList.active {
-        left: 0;
-        transition: 350ms;
-    }
-
-    .showBtn {
-        position: fixed;
-        padding: 3px;
-        height: 80px;
-        width: 40px;
-        top: 46%;
-        left: 0;
-        transition: 600ms;
-        border-left: 0;
-        background-color: #fff;
-        display: block;
-    }
-
-    .showBtn.active {
-        left: 300px;
-        transition: 350ms;
-    }
-    
-    .arrow {
-        width: 100%;
-        height: 100%;
-    }
-}
-
 @media screen and (max-width: 380px){
     .teamLine{
         font-size: 0.8rem;
     }
+}
+
+// ------------------------------------------------------------------
+// Спинер загрузки 
+
+// Константы спинера 
+$bg-color: #fff; //container background-color;
+$basic-dark-color: #212121; //color of the spinner
+$border-width: 4px; //width of spinners border
+$basic-spinner-dimensions: 80px; //width and height of spinner
+$main-spinner-dimensions: $basic-spinner-dimensions - $border-width * 2; //width and height of bigger circle
+$small-spinner-dimensions: $main-spinner-dimensions * 0.7; 
+
+.spinner {
+    position: relative;
+    width: $basic-spinner-dimensions;
+    height: $basic-spinner-dimensions;
+    margin: auto;
+
+    &:before,
+    &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        border-width: 4px;
+        border-style: solid;
+        border-radius: 50%;
+    }
+}
+
+  .spinner.spinner-1 {
+  
+    @keyframes rotate-animation {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes anti-rotate-animation {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(-360deg);
+    }
+  }
+  
+  &:before {
+    width: $main-spinner-dimensions;
+    height: $main-spinner-dimensions;
+    border-bottom-color: $basic-dark-color;
+    border-right-color: $basic-dark-color;
+    border-top-color: rgba($basic-dark-color, 0);
+    border-left-color: rgba($basic-dark-color, 0);
+    top: 0px;
+    left: 0px;
+    animation: rotate-animation 1s linear 0s infinite;
+  }
+  
+  &:after {
+    width: $small-spinner-dimensions;
+    height: $small-spinner-dimensions;
+    border-bottom-color: $basic-dark-color;
+    border-right-color: $basic-dark-color;
+    border-top-color: rgba($basic-dark-color, 0);
+    border-left-color: rgba($basic-dark-color, 0);
+    top: ($main-spinner-dimensions - $small-spinner-dimensions) / 2;
+    left: ($main-spinner-dimensions - $small-spinner-dimensions) / 2;
+    animation: anti-rotate-animation 0.85s linear 0s infinite;
+  }
 }

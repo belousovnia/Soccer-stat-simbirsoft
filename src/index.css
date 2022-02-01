@@ -1,23 +1,114 @@
-.app {
+.navbar {
+  position: fixed;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 2%;
-  background-color: #A7D1E9;
+  top: 0;
+  width: 100%;
+  height: 70px;
+  background-color: #015fac;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.headerLink {
+  color: white;
+  text-decoration: none;
+  font-size: 25px;
+}
+
+@media screen and (max-width: 850px) {
+  .navbar {
+    height: 60px;
+  }
+  .home {
+    margin-top: 60px;
+  }
+}
+
+@media screen and (min-width: 450px) and (max-width: 850px) {
+  .headerLink {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .headerLink {
+    font-size: 15px;
+    padding: 5px;
+  }
+}
+
+.headerLink:hover {
+  color: black;
+}
+
+.headerLink:focus {
+  color: black;
+}
+
+.home {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #9dd8ff;
   width: 100%;
   height: 100vh;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
 }
 
-.firstList {
-  margin: 0px;
-  margin-right: 50px;
-  height: 100%;
-  width: 300px;
-  background-color: #fff;
-  border: 1px solid #37ACEF;
+.homeLink {
+  color: white;
+  text-decoration: none;
+  max-width: 400px;
+  width: 100%;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 25px;
+  background-color: #208feb;
+  border-radius: 15px;
+  border: 3px solid #015fac;
+  -webkit-box-shadow: 10px 10px 5px #80b0cf;
+          box-shadow: 10px 10px 5px #80b0cf;
+  margin-bottom: 30px;
+}
+
+.h1Home {
+  max-width: 1000px;
+  font-size: 26px;
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.homeLink:hover {
+  color: black;
+}
+
+.Teams {
+  padding-top: 70px;
+  background-color: #9dd8ff;
+  width: 100%;
+  height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -25,14 +116,34 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: auto;
 }
 
-.secondList {
-  margin: 0;
-  width: 700px;
+.containerTeams {
+  width: 100%;
   height: 100%;
-  background-color: #fff;
-  border: 1px solid #37ACEF;
+  overflow: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media screen and (max-width: 850px) {
+  .Teams {
+    padding-top: 60px;
+  }
+}
+
+.teamsList {
+  width: 100%;
+  max-width: 470px;
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -40,72 +151,102 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  padding-right: 10px;
+  padding-left: 10px;
 }
 
-.showBtn {
-  display: none;
-}
-
-.btn {
-  border-radius: 0px;
-  border: 1px solid #37ACEF;
-  color: #212529;
-}
-
-.block1 {
+.teamsLink {
   width: 100%;
+  font-size: 25px;
+  background-color: #fff;
+  margin-top: 20px;
+  border: 2px solid #208feb;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 5px;
+  border-radius: 15px;
+  color: black;
+  text-decoration: none;
+  text-align: center;
 }
 
-.btnBlock {
-  width: 100%;
-  height: 40px;
+@media screen and (max-width: 450px) {
+  .teamsLink {
+    font-size: 20px;
+  }
 }
 
-.btnBlock .btn {
-  border: 0;
-  height: 40px;
-  border-bottom: 1px solid #37ACEF;
+.teamsLink:hover {
+  color: black;
+  background-color: #208feb;
 }
 
-.btnBlock .btn1 {
+.logoItem {
   height: 40px;
-  border-right: 1px solid #37ACEF;
+  width: auto;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.shadowLogo {
+  height: 40px;
+  width: 40px;
+  margin-right: 5px;
+  margin-left: 5px;
 }
 
 .searchBlock {
   width: 100%;
-  height: 40px;
+  height: 60px;
+  min-height: 60px;
   padding: 10px;
-  border-bottom: 1px solid #37ACEF;
+  padding-right: 6px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding-right: 6px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: static;
+  background-color: #208feb;
 }
 
 .searchLine {
-  width: 100%;
+  max-width: 500px;
   margin-right: 4px;
   border-radius: 0px;
+  font-size: 26px;
 }
 
 .buttonSearch {
-  width: 50px;
+  width: 100px;
   padding: 0;
-  font-size: 0.6rem;
+  font-size: 20px;
   margin-right: 4px;
   padding-left: 2px;
   padding-right: 2px;
+  padding-bottom: 2px;
+  border: 2px solid white;
+  color: white;
 }
 
 .buttonSearchDisable {
   color: crimson;
-  border: 1px solid #dc143c;
+  border: 2px solid #dc143c;
+  padding-bottom: 2px;
 }
 
-.teamList {
-  width: 100%;
-  overflow: auto;
+@media screen and (max-width: 450px) {
+  .searchLine {
+    font-size: 15px;
+  }
+  .buttonSearch {
+    font-size: 15px;
+  }
 }
 
 .listInform {
@@ -142,26 +283,32 @@
       -ms-flex-align: center;
           align-items: center;
   border: 0;
-  border-bottom: 1px solid #37ACEF;
+  border-bottom: 1px solid #0d6efd;
 }
 
-.logoItem {
-  height: 28px;
-  width: 50px;
+.matchList {
+  padding-top: 70px;
+  width: 100%;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  overflow: auto;
 }
 
-.nameItem {
-  margin: 0;
-}
-
-.shadowLogo {
-  height: 28px;
-  width: 50px;
-  text-align: center;
+@media screen and (max-width: 850px) {
+  .matchList {
+    padding-top: 60px;
+  }
 }
 
 .toolBar {
   width: 100%;
+  height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -174,35 +321,55 @@
           justify-content: flex-end;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  background-color: #208feb;
+  padding-bottom: 5px;
 }
 
 .typeMatch {
-  height: 30px;
+  width: 100%;
   padding-left: 5px;
   padding-right: 5px;
-  color: #212529;
-  font-size: 20px;
+  padding-bottom: 8px;
+  padding-top: 5px;
+  color: white;
+  font-size: 25px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  white-space: nowrap;
-  border-bottom: 1px solid #37ACEF;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-bottom: 5px;
+  background-color: #208feb;
+  text-align: center;
+}
+
+@media screen and (min-width: 450px) and (max-width: 850px) {
+  .typeMatch {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .typeMatch {
+    font-size: 15px;
+  }
+}
+
+.met {
+  font-size: 20px;
+  color: white;
 }
 
 .filter {
   height: auto;
-  color: #37ACEF;
-  font-size: 15px;
+  padding-bottom: 5px;
+  color: #0d6efd;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -218,21 +385,20 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  border-bottom: 1px solid #37ACEF;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
+  color: #000;
 }
 
 .filter * {
-  color: #37ACEF;
-  font-size: 15px;
+  font-size: 17px;
 }
 
 .filter .containerSearch {
   height: auto;
   width: auto;
-  height: 25px;
+  height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -241,41 +407,38 @@
       -ms-flex-direction: row;
           flex-direction: row;
   margin-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 5px;
 }
 
 .filter .containerSearch .btn {
   margin-left: 0;
+  margin-right: 5px;
 }
 
 .filter .containerSearch .buttonDanger {
+  font-weight: bold;
   color: crimson;
-  border: 1px solid #dc143c;
+  border: 3px solid #dc143c;
 }
 
 .filter .containerSearch .buttonDanger:hover {
   color: white;
 }
 
-.filter .btnSearch {
-  margin-left: 10px;
+.filter .buttonSearch {
+  width: auto;
+  margin-right: 4px;
+  padding: 4px;
+  font-size: 16px;
+  border: 3px solid white;
+  color: white;
+  font-weight: bold;
 }
 
-.filter .date {
-  border: 0;
-  border-right: 1px solid #37ACEF;
-  border-left: 1px solid #37ACEF;
-  border-top: 1px solid #37ACEF;
-}
-
-.filter .btn {
-  height: 25px;
-  padding: 0;
-  padding-left: 5px;
-  padding-right: 5px;
-  border: 0;
-  margin-right: 10px;
-  margin-left: 10px;
-  border: 1px solid #37ACEF;
+.filter .buttonSearch:hover {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
 }
 
 .filter .met {
@@ -288,19 +451,36 @@
           align-items: center;
 }
 
+@media screen and (max-width: 600px) {
+  .filter .buttonSearch {
+    font-size: 10px;
+  }
+  .filter .buttonDanger {
+    font-size: 14px;
+    padding: 4px;
+  }
+}
+
 .dateInput {
-  height: 25px;
-  border: 1px solid #37ACEF;
+  border: 1px solid black;
 }
 
 .containerMatchList {
   width: 100%;
+  height: 100%;
   overflow: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-.matchList {
+.matchContainer {
   width: 100%;
-  height: auto;
+  max-width: 500px;
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -324,7 +504,7 @@
 .matchTile {
   width: auto;
   height: auto;
-  border: 1px solid #37ACEF;
+  border: 1px solid #0d6efd;
   margin: 10px;
   background-color: white;
 }
@@ -385,6 +565,7 @@
       -ms-flex-pack: end;
           justify-content: flex-end;
   padding-left: 10px;
+  text-align: right;
 }
 
 .awayTeam {
@@ -404,52 +585,95 @@
   color: #eeba20;
 }
 
-@media screen and (max-width: 860px) {
-  .app {
-    padding-left: 50px;
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-  .firstList {
-    position: fixed;
-    height: 100vh;
-    top: 0;
-    left: -300px;
-    -webkit-transition: 600ms;
-    transition: 600ms;
-  }
-  .firstList.active {
-    left: 0;
-    -webkit-transition: 350ms;
-    transition: 350ms;
-  }
-  .showBtn {
-    position: fixed;
-    padding: 3px;
-    height: 80px;
-    width: 40px;
-    top: 46%;
-    left: 0;
-    -webkit-transition: 600ms;
-    transition: 600ms;
-    border-left: 0;
-    background-color: #fff;
-    display: block;
-  }
-  .showBtn.active {
-    left: 300px;
-    -webkit-transition: 350ms;
-    transition: 350ms;
-  }
-  .arrow {
-    width: 100%;
-    height: 100%;
-  }
-}
-
 @media screen and (max-width: 380px) {
   .teamLine {
     font-size: 0.8rem;
   }
+}
+
+.spinner {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: auto;
+}
+
+.spinner:before, .spinner:after {
+  content: "";
+  display: block;
+  position: absolute;
+  border-width: 4px;
+  border-style: solid;
+  border-radius: 50%;
+}
+
+@-webkit-keyframes rotate-animation {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate-animation {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes anti-rotate-animation {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+  }
+}
+
+@keyframes anti-rotate-animation {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+  }
+}
+
+.spinner.spinner-1:before {
+  width: 72px;
+  height: 72px;
+  border-bottom-color: #212121;
+  border-right-color: #212121;
+  border-top-color: rgba(33, 33, 33, 0);
+  border-left-color: rgba(33, 33, 33, 0);
+  top: 0px;
+  left: 0px;
+  -webkit-animation: rotate-animation 1s linear 0s infinite;
+          animation: rotate-animation 1s linear 0s infinite;
+}
+
+.spinner.spinner-1:after {
+  width: 50.4px;
+  height: 50.4px;
+  border-bottom-color: #212121;
+  border-right-color: #212121;
+  border-top-color: rgba(33, 33, 33, 0);
+  border-left-color: rgba(33, 33, 33, 0);
+  top: 10.8px;
+  left: 10.8px;
+  -webkit-animation: anti-rotate-animation 0.85s linear 0s infinite;
+          animation: anti-rotate-animation 0.85s linear 0s infinite;
 }
 /*# sourceMappingURL=index.css.map */

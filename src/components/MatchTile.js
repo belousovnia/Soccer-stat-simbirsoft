@@ -13,7 +13,7 @@ function MatchTile(props){
     };
   };  
 
-  // Формирует строчку с голами. 
+  // Формирует строчку с очками команд. 
   function score()  {
     if (props.dataMatch.status == 'FINISHED'){
       return (

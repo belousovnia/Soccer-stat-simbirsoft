@@ -1,46 +1,46 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
+import { useParams, useSearchParams  } from 'react-router-dom';
 import MatchList from './MatchList';
 
-function SecondList(props){
+function Matchs(props) {
 
-  let defaultNameSecondList;
-  if (sessionStorage.nameSecondList == undefined){
-    defaultNameSecondList = 'Выберите команду или соревнование';
-  }else{
-    defaultNameSecondList = sessionStorage.nameSecondList;
+  const [filterParams, setFilterParams] = useSearchParams();
+  let dateFromParms = filterParams.get('from') || 'Invalid Date';
+  let dateToParms = filterParams.get('to') || 'Invalid Date';
+
+  if (typeof dateFromParms == 'string') {
+    dateFromParms = new Date(Number(dateFromParms));
+  };
+  if (typeof dateToParms == 'string') {
+    dateToParms = new Date(Number(dateToParms));
   };
 
-  const [nameSecondListChange, setNameSecondListChange] = 
-    useState(defaultNameSecondList);
-
-  let storageDateFrom = sessionStorage.dateFrom;
-  let storageDateTo = sessionStorage.dateTo;
   let formDateFrom = '';
   let formDateTo = '';
   
-  if (storageDateFrom == undefined || storageDateTo == undefined) {
-    storageDateFrom = 'Invalid Date';
-    storageDateTo = 'Invalid Date';   
+  if (dateFromParms == 'Invalid Date' || dateToParms == 'Invalid Date') {
+    dateFromParms = 'Invalid Date';
+    dateToParms = 'Invalid Date';   
   }else{
-    storageDateFrom = new Date(Number(storageDateFrom));
-    storageDateTo = new Date(Number(storageDateTo));
+    dateFromParms = new Date(Number(dateFromParms));
+    dateToParms = new Date(Number(dateToParms));
 
-    let yearFrom = storageDateFrom.getFullYear();
-    let monthFrom = storageDateFrom.getMonth()+1;
+    let yearFrom = dateFromParms.getFullYear();
+    let monthFrom = dateFromParms.getMonth()+1;
     if (monthFrom < 10) {
       monthFrom = `0${monthFrom}`;
     };
-    let dayFrom = storageDateFrom.getDate();
+    let dayFrom = dateFromParms.getDate();
     if (dayFrom < 10) {
       dayFrom = `0${dayFrom}`;
     };
 
-    let yearTo = storageDateTo.getFullYear();
-    let monthTo = storageDateTo.getMonth()+1;
+    let yearTo = dateToParms.getFullYear();
+    let monthTo = dateToParms.getMonth()+1;
     if (monthTo < 10) {
       monthTo = `0${monthTo}`;
     };
-    let dayTo = storageDateTo.getDate();
+    let dayTo = dateToParms.getDate();
     if (dayTo < 10) {
       dayTo = `0${dayTo}`;
     };
@@ -57,17 +57,11 @@ function SecondList(props){
   }, []);
 
   //-----------------------------------------------------------------
-
-  const [dateFrom, setDateFrom] = useState(storageDateFrom);
-  const [dateTo, setDateTo] = useState(storageDateTo);
   
   // Сохраняет фильтр по дате.
   function dateSetting() {
     let dateFrom = new Date(document.getElementById('dateFrom').value);  
     let dateTo = new Date(document.getElementById('dateTo').value);  
-    
-    sessionStorage.setItem('dateFrom', dateFrom.getTime());
-    sessionStorage.setItem('dateTo', dateTo.getTime());
 
     if (dateFrom > dateTo){
       alert('Неправильный временной промежуток');
@@ -75,8 +69,10 @@ function SecondList(props){
     };
 
     if (dateFrom != 'Invalid Date' && dateTo != 'Invalid Date'){
-      setDateFrom(dateFrom);
-      setDateTo(dateTo);
+      setFilterParams({
+          from: dateFrom.getTime(),
+          to: dateTo.getTime()
+        });
       document.getElementById('matchList').scrollTop=0;
       return;
     };
@@ -85,29 +81,37 @@ function SecondList(props){
       alert('Нужно установить обе даты');
       return;
     };
-    
-    setDateFrom(dateFrom);
-    setDateTo(dateTo);
-    document.getElementById('matchList').scrollTop=0;
   };
 
   // Сброс фильтра по дате.
   function dateSettingDefault() {
-    sessionStorage.setItem('dateFrom', 'Invalid Date');
-    sessionStorage.setItem('dateTo', 'Invalid Date');
     document.getElementById('dateFrom').value = 'Invalid Date';
     document.getElementById('dateTo').value = 'Invalid Date';
+    setFilterParams({
+      from: 'Invalid Date',
+      to: 'Invalid Date'
+    });
     dateSetting();
+    document.getElementById('matchList').scrollTop=0;
   };
 
+  let titleName;
+  if (props.type == 0) {
+    titleName = 'Матчи команды ';
+  } else if (props.type == 1) {
+    titleName = 'Матчи соревнования ';
+  };
+
+
   return (
-    <div className='secondList'>
+    <div className='matchList'>
       <div>
       <div 
         className="typeMatch"
         id="typeMatch"
       >
-        {nameSecondListChange}
+        {titleName}
+        {useParams().nameList}
       </div>
       <div className="toolBar">
         <div
@@ -119,6 +123,7 @@ function SecondList(props){
               type="date" 
               className="dateInput" 
               id="dateFrom"
+              defaultValue={formDateFrom}
             />
           </div>
           <div className="containerSearch">
@@ -127,24 +132,25 @@ function SecondList(props){
               type="date" 
               className="dateInput" 
               id="dateTo"
+              defaultValue={formDateTo}
             />
           </div>
 
           <div className="containerSearch btnSearch">
             <button 
             type="button" 
-            className="btn btn-outline-primary"
+            className="btn btn-outline-primary buttonSearch"
             onClick={() => dateSetting()}
             >
               Отфильтровать
             </button>
-              <button 
-                type="button" 
-                className="buttonDanger btn btn-outline-danger"
-                onClick={() => dateSettingDefault()}
-                >
-                  Сброс
-              </button>
+            <button 
+              type="button" 
+              className="buttonDanger btn btn-outline-danger"
+              onClick={() => dateSettingDefault()}
+              >
+                Сброс
+            </button>
             
           </div>
         </div>
@@ -153,17 +159,17 @@ function SecondList(props){
       
       <MatchList
         getRandomKey = {props.getRandomKey}
-        radioSaved = {props.radioSaved}
-        id = {props.id}
-        dateFrom = {dateFrom}
-        dateTo = {dateTo}
+        radioSaved = {props.type}
+        id = {useParams().id}
+        saveName = {useParams().nameList}
+        dateFrom = {dateFromParms}
+        dateTo = {dateToParms}
         rCompetitionsMatches = {props.rCompetitionsMatches}
         rTeamsMatches = {props.rTeamsMatches}
         nameSecondList = {props.nameSecondList}
-        setNameSecondListChange = {setNameSecondListChange}
       />
     </div>
   );
 };
 
-export default SecondList;
+export default Matchs;
