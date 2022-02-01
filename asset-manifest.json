@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/Soccer-stat-simbirsoft/static/css/main.eeb3d278.chunk.css",
+    "main.js": "/Soccer-stat-simbirsoft/static/js/main.0b178fdc.chunk.js",
+    "main.js.map": "/Soccer-stat-simbirsoft/static/js/main.0b178fdc.chunk.js.map",
+    "runtime-main.js": "/Soccer-stat-simbirsoft/static/js/runtime-main.68592a04.js",
+    "runtime-main.js.map": "/Soccer-stat-simbirsoft/static/js/runtime-main.68592a04.js.map",
+    "static/css/2.0a9ec390.chunk.css": "/Soccer-stat-simbirsoft/static/css/2.0a9ec390.chunk.css",
+    "static/js/2.bf1aed87.chunk.js": "/Soccer-stat-simbirsoft/static/js/2.bf1aed87.chunk.js",
+    "static/js/2.bf1aed87.chunk.js.map": "/Soccer-stat-simbirsoft/static/js/2.bf1aed87.chunk.js.map",
+    "static/js/3.dcc52090.chunk.js": "/Soccer-stat-simbirsoft/static/js/3.dcc52090.chunk.js",
+    "static/js/3.dcc52090.chunk.js.map": "/Soccer-stat-simbirsoft/static/js/3.dcc52090.chunk.js.map",
+    "index.html": "/Soccer-stat-simbirsoft/index.html",
+    "static/css/2.0a9ec390.chunk.css.map": "/Soccer-stat-simbirsoft/static/css/2.0a9ec390.chunk.css.map",
+    "static/css/main.eeb3d278.chunk.css.map": "/Soccer-stat-simbirsoft/static/css/main.eeb3d278.chunk.css.map",
+    "static/js/2.bf1aed87.chunk.js.LICENSE.txt": "/Soccer-stat-simbirsoft/static/js/2.bf1aed87.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.68592a04.js",
+    "static/css/2.0a9ec390.chunk.css",
+    "static/js/2.bf1aed87.chunk.js",
+    "static/css/main.eeb3d278.chunk.css",
+    "static/js/main.0b178fdc.chunk.js"
+  ]
+}
