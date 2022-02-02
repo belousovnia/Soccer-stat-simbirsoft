@@ -1,4 +1,4 @@
-Входное тестовое задание на поток Frontend
+Входное тестовое задание на поток Frontend компании SimbirSoft
 Приложение SoccerStat
 
 Посмотреть можно по ссылке: https://belousovnia.github.io/Soccer-stat-simbirsoft/
