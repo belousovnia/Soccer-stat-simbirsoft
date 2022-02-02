@@ -100,6 +100,13 @@
   margin-bottom: 100px;
 }
 
+@media screen and (max-width: 450px) {
+  .h1Home {
+    font-size: 20px;
+    margin-bottom: 50px;
+  }
+}
+
 .homeLink:hover {
   color: black;
 }
